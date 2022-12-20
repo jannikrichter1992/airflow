@@ -20,7 +20,7 @@ hello_operator = PythonVirtualenvOperator(
         task_id='hello_prep_task',
         python_callable=print_hello,
         requirements=get_modules(),
-        python_version='3.8',
+        #python_version='3.8',
         provide_context=True,
         dag=dag
     )
