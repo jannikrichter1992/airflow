@@ -5,8 +5,8 @@ from airflow.operators.python_operator import PythonOperator
 import subprocess
 
 def install_modules():
-    subprocess.call(['bash'])
     subprocess.call(['python', '-m', 'venv' ,'/opt/airflow/envs/helloworld_venv'])
+    subprocess.call(['bash'])
     subprocess.call(['source', '/opt/airflow/envs/helloworld_venv/bin/activate'])
     subprocess.call(['pip', 'install', '-r', 'helloworld_modules.txt'])
 
