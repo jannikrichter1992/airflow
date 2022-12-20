@@ -6,7 +6,7 @@ import subprocess
 
 def install_modules():
     subprocess.call(['python', '-m', 'venv' ,'/opt/airflow/envs/helloworld_venv'])
-    subprocess.call(['source', '/opt/airflow/envs/helloworld_venv'])
+    subprocess.call(['source', '/opt/airflow/envs/helloworld_venv/bin/activate'])
     subprocess.call(['pip', 'install', '-r', 'helloworld_modules.txt'])
 
 dag = DAG('hello_world_prep', description='Hello World DAG',
