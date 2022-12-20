@@ -4,6 +4,9 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonVirtualenvOperator
 
 def print_hello():
+    return 'Hello world from first Airflow DAG!'
+
+def get_modules():
     requirments = open("helloworld_modules.txt", "r")
     lines = requirments.readlines()
     return lines
@@ -15,7 +18,7 @@ dag = DAG('hello_world_prep', description='Hello World DAG',
 hello_operator = PythonVirtualenvOperator(
         task_id='hello_prep_task',
         python_callable=print_hello,
-        requirements=print_hello(),
+        requirements=get_modules(),
         python_version='3.8',
         provide_context=True,
         dag=dag
