@@ -9,6 +9,7 @@ def print_hello():
 def get_modules():
     requirments = open("helloworld_modules.txt", "r")
     lines = requirments.readlines()
+    requirments.close()
     return lines
 
 dag = DAG('hello_world_prep', description='Hello World DAG',
