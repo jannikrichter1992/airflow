@@ -5,10 +5,9 @@ from airflow.operators.python_operator import PythonOperator
 import subprocess
 
 def install_modules():
-    subprocess.call(['cd ', '/opt/airflow/envs'])
-    subprocess.call(['python', '-m', 'venv' ,'helloworld_venv'])
+    subprocess.call(['python', '-m', 'venv' ,'/opt/airflow/envs/helloworld_venv'])
     subprocess.call(['cd', '/helloworld_venv/bin'])
-    subprocess.call(['./activate'])
+    subprocess.call(['source', '/opt/airflow/envs/helloworld_venv'])
     subprocess.call(['pip', 'install', '-r', 'helloworld_modules.txt'])
 
 dag = DAG('hello_world_prep', description='Hello World DAG',
