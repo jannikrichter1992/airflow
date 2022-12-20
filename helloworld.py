@@ -2,14 +2,15 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
+import subprocess
 
-def print_hello():
-    return 'Hello world from first Airflow DAG!'
+def install_modules():
+    subprocess.call(['pip', 'install', '-r', 'helloworld_modules.txt'])
 
-dag = DAG('hello_world', description='Hello World DAG',
-          schedule_interval='0 12 * * *',
+dag = DAG('hello_world_prep', description='Hello World DAG',
+          schedule_interval='@once',
           start_date=datetime(2017, 3, 20), catchup=False)
 
-hello_operator = PythonOperator(task_id='hello_task', python_callable=print_hello, dag=dag)
+hello_operator = PythonOperator(task_id='hello_prep_task', python_callable=install_modules, dag=dag)
 
 hello_operator
