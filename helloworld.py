@@ -7,7 +7,7 @@ def print_hello():
     return 'Hello world from first Airflow DAG!'
 
 def get_modules():
-    requirments = open("helloworld_modules.txt", "r")
+    requirments = open("/opt/airflow/dags/helloworld_modules.txt", "r")
     lines = requirments.readlines()
     requirments.close()
     return lines
