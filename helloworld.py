@@ -6,7 +6,6 @@ import subprocess
 
 def install_modules():
     subprocess.call(['python', '-m', 'venv' ,'/opt/airflow/envs/helloworld_venv'])
-    subprocess.call(['cd', '/helloworld_venv/bin'])
     subprocess.call(['source', '/opt/airflow/envs/helloworld_venv'])
     subprocess.call(['pip', 'install', '-r', 'helloworld_modules.txt'])
 
